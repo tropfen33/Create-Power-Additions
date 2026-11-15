@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "power_leds:led_red"
+  },
+  {
+   "item": "power_leds:led_green"
+  },
+  {
+   "item": "power_leds:led_blue"
+  },
+  {
+   "item": "create:polished_rose_quartz"
+  }
+ ],
+ "result": {
+  "count": 1,
+  "id": "power_leds:led_white"
+ }
+}

@@ -1,0 +1,33 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+license = "MIT"
+
+[[mods]]
+modId = "power_leds"
+version = "0.1.0"
+displayName = "Create: Power LED's"
+authors = "Tropfen_33"
+description = '''
+Red, green, blue and RGB (white) LEDs for the circuit boards of Create: Power Grid.
+'''
+
+[[dependencies.power_leds]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.power_leds]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.power_leds]]
+modId = "powergrid"
+type = "required"
+versionRange = "[0.6.2,)"
+ordering = "AFTER"
+side = "BOTH"
