@@ -1,0 +1,78 @@
+{
+ "credit": "poweradditions",
+ "parent": "block/block",
+ "textures": {
+  "0": "poweradditions:block/component/led_parts",
+  "particle": "poweradditions:block/component/led_parts"
+ },
+ "elements": [
+  {
+   "from": [
+    -0.05,
+    0.9,
+    -0.05
+   ],
+   "to": [
+    2.05,
+    3.0,
+    2.05
+   ],
+   "faces": {
+    "north": {
+     "uv": [
+      10,
+      0,
+      12,
+      2
+     ],
+     "texture": "#0"
+    },
+    "east": {
+     "uv": [
+      10,
+      0,
+      12,
+      2
+     ],
+     "texture": "#0"
+    },
+    "south": {
+     "uv": [
+      10,
+      0,
+      12,
+      2
+     ],
+     "texture": "#0"
+    },
+    "west": {
+     "uv": [
+      10,
+      0,
+      12,
+      2
+     ],
+     "texture": "#0"
+    },
+    "up": {
+     "uv": [
+      10,
+      0,
+      12,
+      2
+     ],
+     "texture": "#0"
+    },
+    "down": {
+     "uv": [
+      10,
+      0,
+      12,
+      2
+     ],
+     "texture": "#0"
+    }
+   }
+  }
+ ]
+}

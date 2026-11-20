@@ -1,0 +1,32 @@
+package com.Tropfen_33.poweradditions.components;
+
+import com.Tropfen_33.poweradditions.LedColor;
+import com.Tropfen_33.poweradditions.LedRegistries;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import org.patryk3211.powergrid.circuits.schematic.ComponentFootprint;
+
+/** One die, two pins: cathode = terminal 0 (short leg), anode = terminal 1 (long leg). */
+public class SingleLedComponent extends AbstractLedComponent {
+    private final LedColor color;
+
+    public SingleLedComponent(LedColor color) {
+        super(footprint(), color);
+        this.color = color;
+    }
+
+    @Override protected Item functionalItem() { return LedRegistries.ledItem(color); }
+    @Override protected ItemStack brokenStack(int mask) { return new ItemStack(LedRegistries.brokenItem(color)); }
+
+    private static ComponentFootprint footprint() {
+        return new ComponentFootprint.Builder(2, 2, null, "component.powergrid")
+                .addPadSharedText(0, 0, 0, "generic.cathode", "generic.cathode.short")
+                .addPadSharedText(1, 1, 1, "generic.anode", "generic.anode.short")
+                .withItem()
+                .withOutline()
+                .build();
+    }
+
+    @Override protected int anodeTerminal(int die) { return 1; }
+    @Override protected int cathodeTerminal() { return 0; }
+}

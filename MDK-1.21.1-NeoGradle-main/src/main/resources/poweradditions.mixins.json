@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "com.Tropfen_33.poweradditions.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CircuitBoardBlockEntityCommonMixin"
+  ],
+  "client": [
+    "ComponentPropertiesWidgetMixin",
+    "TextFieldPropertyWidgetMixin",
+    "EnumPropertyWidgetMixin",
+    "CircuitBoardBlockEntityMixin",
+    "ComponentModelsImplMixin",
+    "CircuitBoardRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

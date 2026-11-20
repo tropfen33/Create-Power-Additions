@@ -1,7 +1,0 @@
-{
- "parent": "minecraft:block/block",
- "textures": {
-  "particle": "power_leds_nadditions:block/component/led_parts"
- },
- "elements": []
-}
