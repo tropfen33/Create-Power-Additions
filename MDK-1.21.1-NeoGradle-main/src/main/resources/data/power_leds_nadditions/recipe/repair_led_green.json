@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "power_leds_nadditions:led_green_broken"
+  },
+  {
+   "item": "minecraft:emerald"
+  }
+ ],
+ "result": {
+  "id": "power_leds_nadditions:led_green",
+  "count": 1
+ }
+}

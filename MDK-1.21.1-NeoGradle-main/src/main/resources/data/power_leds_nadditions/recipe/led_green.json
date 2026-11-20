@@ -1,0 +1,24 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "key": {
+  "G": {
+   "item": "minecraft:glass"
+  },
+  "M": {
+   "item": "minecraft:emerald"
+  },
+  "I": {
+   "item": "create:iron_sheet"
+  }
+ },
+ "pattern": [
+  "G",
+  "M",
+  "I"
+ ],
+ "result": {
+  "id": "power_leds_nadditions:led_green",
+  "count": 1
+ }
+}

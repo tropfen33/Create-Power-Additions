@@ -3,31 +3,34 @@ loaderVersion = "[1,)"
 license = "MIT"
 
 [[mods]]
-modId = "power_leds"
+modId = "power_leds_nadditions"
 version = "0.1.0"
-displayName = "Create: Power LED's"
+displayName = "Create: Power LED's and Additions"
 authors = "Tropfen_33"
 description = '''
 Red, green, blue and RGB (white) LEDs for the circuit boards of Create: Power Grid.
 '''
 
-[[dependencies.power_leds]]
+[[dependencies.power_leds_nadditions]]
 modId = "neoforge"
 type = "required"
 versionRange = "[21,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.power_leds]]
+[[dependencies.power_leds_nadditions]]
 modId = "minecraft"
 type = "required"
 versionRange = "[1.21.1,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.power_leds]]
+[[dependencies.power_leds_nadditions]]
 modId = "powergrid"
 type = "required"
 versionRange = "[0.6.2,)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[mixins]]
+config = "power_leds_nadditions.mixins.json"
