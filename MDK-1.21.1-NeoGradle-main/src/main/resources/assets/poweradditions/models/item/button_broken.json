@@ -1,0 +1,7 @@
+{
+ "parent": "powergrid:block/switches/lv_button_off_v",
+ "textures": {
+  "2": "poweradditions:block/burnt_items/block_switches_lv_switch",
+  "particle": "poweradditions:block/burnt_items/block_switches_lv_switch"
+ }
+}

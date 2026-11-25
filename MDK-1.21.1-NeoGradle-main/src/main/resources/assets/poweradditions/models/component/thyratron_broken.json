@@ -1,0 +1,6 @@
+{
+ "parent": "powergrid:component/thyratron",
+ "textures": {
+  "1": "poweradditions:block/component/burnt/thyratron"
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:diode_broken"
+  },
+  {
+   "item": "create:polished_rose_quartz"
+  }
+ ],
+ "result": {
+  "id": "powergrid:diode",
+  "count": 1
+ }
+}

@@ -1,0 +1,6 @@
+{
+ "parent": "powergrid:component/diode",
+ "textures": {
+  "1": "poweradditions:block/component/burnt/diode"
+ }
+}

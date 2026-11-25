@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:button_broken"
+  },
+  {
+   "item": "powergrid:pins"
+  },
+  {
+   "item": "minecraft:stone_button"
+  }
+ ],
+ "result": {
+  "id": "powergrid:lv_button",
+  "count": 1
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "parent": "powergrid:block/lamps/light_bulb",
+ "textures": {
+  "0": "poweradditions:block/burnt_items/block_light_fixture",
+  "particle": "poweradditions:block/burnt_items/block_light_fixture"
+ }
+}

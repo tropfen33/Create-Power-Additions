@@ -1,0 +1,7 @@
+{
+ "parent": "powergrid:component/neon_bulb_vertical",
+ "textures": {
+  "0": "poweradditions:block/component/burnt/neon_tube",
+  "particle": "poweradditions:block/component/burnt/neon_tube"
+ }
+}

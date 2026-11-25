@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:bjt_npn_broken"
+  },
+  {
+   "item": "powergrid:golden_wire"
+  },
+  {
+   "item": "create:polished_rose_quartz"
+  }
+ ],
+ "result": {
+  "id": "powergrid:bjt_npn",
+  "count": 1
+ }
+}

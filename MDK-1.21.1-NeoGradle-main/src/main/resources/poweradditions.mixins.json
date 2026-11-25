@@ -3,7 +3,9 @@
   "package": "com.Tropfen_33.poweradditions.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "CircuitBoardBlockEntityCommonMixin"
+    "CircuitBoardBlockEntityCommonMixin",
+    "BakedCircuitMixin",
+    "ThermalUnitAccessor"
   ],
   "client": [
     "ComponentPropertiesWidgetMixin",
@@ -11,7 +13,8 @@
     "EnumPropertyWidgetMixin",
     "CircuitBoardBlockEntityMixin",
     "ComponentModelsImplMixin",
-    "CircuitBoardRendererMixin"
+    "CircuitBoardRendererMixin",
+    "CircuitBoardModelMixin"
   ],
   "injectors": {
     "defaultRequire": 1

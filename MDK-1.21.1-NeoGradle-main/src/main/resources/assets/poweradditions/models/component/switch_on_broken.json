@@ -1,0 +1,7 @@
+{
+ "parent": "powergrid:component/switch_on",
+ "textures": {
+  "0": "poweradditions:block/component/burnt/switch",
+  "particle": "poweradditions:block/component/burnt/switch"
+ }
+}

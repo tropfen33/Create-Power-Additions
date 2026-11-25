@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:resistor_broken"
+  },
+  {
+   "item": "powergrid:resistive_coil"
+  }
+ ],
+ "result": {
+  "id": "powergrid:resistor",
+  "count": 1
+ }
+}

@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:potentiometer_broken"
+  },
+  {
+   "tag": "minecraft:coals"
+  },
+  {
+   "tag": "c:nuggets/copper"
+  }
+ ],
+ "result": {
+  "id": "powergrid:potentiometer",
+  "count": 1
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "parent": "powergrid:component/button",
+ "textures": {
+  "0": "poweradditions:block/component/burnt/button",
+  "particle": "poweradditions:block/component/burnt/button"
+ }
+}

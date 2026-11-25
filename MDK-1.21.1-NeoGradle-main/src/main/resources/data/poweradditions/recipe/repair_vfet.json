@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:vfet_broken"
+  },
+  {
+   "tag": "c:plates/copper"
+  },
+  {
+   "item": "create:polished_rose_quartz"
+  }
+ ],
+ "result": {
+  "id": "powergrid:vfet",
+  "count": 1
+ }
+}

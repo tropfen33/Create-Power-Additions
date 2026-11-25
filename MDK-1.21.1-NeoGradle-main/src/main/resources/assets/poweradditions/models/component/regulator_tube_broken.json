@@ -1,0 +1,7 @@
+{
+ "parent": "powergrid:component/regulator_tube",
+ "textures": {
+  "0": "poweradditions:block/component/burnt/regulator_tube",
+  "particle": "poweradditions:block/component/burnt/regulator_tube"
+ }
+}

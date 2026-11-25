@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:neon_bulb_broken"
+  },
+  {
+   "item": "minecraft:glowstone_dust"
+  }
+ ],
+ "result": {
+  "id": "powergrid:neon_bulb",
+  "count": 1
+ }
+}

@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:display_module_broken"
+  },
+  {
+   "tag": "c:copper_coils"
+  }
+ ],
+ "result": {
+  "id": "powergrid:display_module",
+  "count": 1
+ }
+}

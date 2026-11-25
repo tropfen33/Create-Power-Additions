@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:switch_broken"
+  },
+  {
+   "item": "powergrid:pins"
+  },
+  {
+   "item": "minecraft:lever"
+  }
+ ],
+ "result": {
+  "id": "powergrid:lv_switch",
+  "count": 1
+ }
+}

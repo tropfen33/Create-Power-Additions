@@ -1,0 +1,7 @@
+{
+ "parent": "powergrid:component/display_module",
+ "textures": {
+  "0": "poweradditions:block/component/burnt/display_module",
+  "particle": "poweradditions:block/component/burnt/display_module"
+ }
+}

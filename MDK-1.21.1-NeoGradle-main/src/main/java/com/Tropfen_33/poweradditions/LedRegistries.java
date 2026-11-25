@@ -7,6 +7,8 @@ import com.Tropfen_33.poweradditions.items.WhiteLedItem;
 import com.Tropfen_33.poweradditions.recipe.WhiteLedRepairRecipe;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -55,6 +57,14 @@ public final class LedRegistries {
     public static final DeferredItem<BrokenWhiteLedItem> LED_WHITE_BROKEN =
             ITEMS.register("led_white_broken", () -> new BrokenWhiteLedItem(new Item.Properties().stacksTo(16)));
 
+    /** Burnt-out versions of Powergrid's own components, keyed by component name (no recipes for now). */
+    public static final Map<String, DeferredItem<Item>> BROKEN_COMPONENT_ITEMS = new LinkedHashMap<>();
+    static {
+        for (String name : BrokenComponents.ITEM_NAMES) {
+            BROKEN_COMPONENT_ITEMS.put(name, ITEMS.registerSimpleItem(name + "_broken"));
+        }
+    }
+
     public static Item ledItem(LedColor c) {
         return switch (c) {
             case RED -> LED_RED.get();
@@ -94,6 +104,7 @@ public final class LedRegistries {
                         out.accept(LED_GREEN_BROKEN.get());
                         out.accept(LED_BLUE_BROKEN.get());
                         out.accept(BrokenWhiteLedItem.of(7));
+                        BROKEN_COMPONENT_ITEMS.values().forEach(i -> out.accept(i.get()));
                     })
                     .build());
 

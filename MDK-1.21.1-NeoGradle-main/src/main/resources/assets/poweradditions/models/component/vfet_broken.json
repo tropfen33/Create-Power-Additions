@@ -1,0 +1,6 @@
+{
+ "parent": "powergrid:component/vfet",
+ "textures": {
+  "0": "poweradditions:block/component/burnt/transistor"
+ }
+}

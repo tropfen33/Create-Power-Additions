@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:light_bulb_broken"
+  },
+  {
+   "tag": "minecraft:coals"
+  }
+ ],
+ "result": {
+  "id": "powergrid:lv_light_bulb",
+  "count": 1
+ }
+}

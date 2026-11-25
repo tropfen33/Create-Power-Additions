@@ -1,0 +1,6 @@
+{
+ "parent": "minecraft:item/generated",
+ "textures": {
+  "layer0": "poweradditions:item/bjt_pnp_broken"
+ }
+}

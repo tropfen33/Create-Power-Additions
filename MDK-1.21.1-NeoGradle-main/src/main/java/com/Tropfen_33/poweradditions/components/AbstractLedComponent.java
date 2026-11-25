@@ -179,14 +179,10 @@ public abstract class AbstractLedComponent extends MirrorableComponent implement
 
                 boolean dead = LedPhysics.overheated(st[i]) || LedPhysics.accumulate(st[i], amps, dies[i]);
                 if (dead) {
-                    // spark + crack, then the die is dead
-                    Vec3 pos = placed.getExactPos();
+                    // the same sparks + sound every other Powergrid component makes when it burns out
                     if (level instanceof ServerLevel sl) {
-                        sl.sendParticles(ParticleTypes.ELECTRIC_SPARK, pos.x, pos.y + 0.15, pos.z, 14, 0.06, 0.06, 0.06, 0.25);
-                        sl.sendParticles(ParticleTypes.LARGE_SMOKE, pos.x, pos.y + 0.15, pos.z, 4, 0.03, 0.03, 0.03, 0.02);
+                        com.Tropfen_33.poweradditions.network.BurntSync.sendBurnEffect(sl, placed.getExactPos());
                     }
-                    level.playSound(null, placed.getPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5f, 1.9f);
-                    level.playSound(null, placed.getPos(), SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.BLOCKS, 0.12f, 2.0f);
                     placed.set(LedProps.BROKEN[i], true);
                     placed.notifyClients(LedProps.BROKEN[i]);
                     wire.setIdealityFactor(LedPhysics.BROKEN_IDEALITY);
@@ -279,7 +275,20 @@ public abstract class AbstractLedComponent extends MirrorableComponent implement
                         .withStyle(ChatFormatting.GRAY));
             }
         }
+        if (anyBroken(placed)) {
+            com.Tropfen_33.poweradditions.board.BurntComponents.addRepairHints(tooltip,
+                    net.minecraft.network.chat.Component.translatable(ComponentRegistry.getItem(this).getDescriptionId()));
+        }
         return true;
+    }
+
+    /** The burnt-out item for the current state (white LED: remembers which dies burnt). */
+    public ItemStack burntItem(PlacedComponent placed) {
+        int mask = 0;
+        for (int i = 0; i < dies.length; i++) {
+            if (placed.get(LedProps.BROKEN[i])) mask |= 1 << i;
+        }
+        return brokenStack(mask);
     }
 
     // ---------------- rendering ----------------

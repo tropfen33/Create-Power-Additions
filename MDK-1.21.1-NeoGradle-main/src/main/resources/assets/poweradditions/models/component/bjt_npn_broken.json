@@ -1,0 +1,6 @@
+{
+ "parent": "powergrid:component/bjt_npn",
+ "textures": {
+  "1": "poweradditions:block/component/burnt/transistor"
+ }
+}

@@ -1,10 +1,10 @@
 package com.Tropfen_33.poweradditions.mixin;
 
+import com.Tropfen_33.poweradditions.PowerAdditions;
 import com.Tropfen_33.poweradditions.board.BoardPicking;
 import com.Tropfen_33.poweradditions.board.BurntComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.resources.language.I18n;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.phys.HitResult;
 import org.patryk3211.powergrid.circuits.circuitboard.BakedCircuit;
@@ -19,7 +19,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
@@ -29,11 +28,10 @@ import java.util.List;
  *  - Powergrid's "Damaged / This circuit board has damaged components" lines only show while sneaking and the
  *    "Sneak-right-click to repair" line is removed (complete repair is disabled).
  *  - Mini HUD for the component you look at: burnt components are always named; while sneaking every component is.
- * Also re-meshes the board when a component burns out (or gets replaced), so burnt components can disappear.
  */
 @Mixin(value = CircuitBoardBlockEntity.class, remap = false)
 public abstract class CircuitBoardBlockEntityMixin {
-    @Unique private int poweradditions$burntSignature = 0;
+    @Unique private long poweradditions$lastLog = 0;
 
     @Inject(method = "addToGoggleTooltip(Ljava/util/List;Z)Z", at = @At("RETURN"), cancellable = true)
     private void poweradditions$lookedAtComponent(List<Component> tooltip, boolean sneaking, CallbackInfoReturnable<Boolean> cir) {
@@ -49,8 +47,11 @@ public abstract class CircuitBoardBlockEntityMixin {
 
         HitResult hit = ClientSideAccess.getHitResult();
         if (hit != null) {
-            PlacedComponent found = BoardPicking.pick(be, hit.getLocation(), ClientSideAccess.player().getLookAngle());
-            if (found != null && !(found.component instanceof IComponentGoggleInformation)) {
+            PlacedComponent found = BoardPicking.pick(be, ClientSideAccess.player().getEyePosition(), ClientSideAccess.player().getLookAngle(), hit.getLocation());
+            if (found != null) {
+                // components such as the neon bulb, light bulb, switch or button already add their own goggle
+                // lines; for those only a burnt-out notice is added here
+                boolean ownInfo = found.component instanceof IComponentGoggleInformation;
                 boolean burnt = BurntComponents.isBurnt(be, found);
                 boolean hasUnit = false;
                 float temperature = 0f, limit = 0f;
@@ -63,15 +64,25 @@ public abstract class CircuitBoardBlockEntityMixin {
                         limit = Math.max(limit, unit.getOverheatTemperature());
                     }
                 }
+                long now = System.currentTimeMillis();
+                if (now - poweradditions$lastLog > 3000) {
+                    poweradditions$lastLog = now;
+                    PowerAdditions.LOGGER.info("[PowerAdditions] goggles look at {} burnt={} ownInfo={}",
+                            ComponentRegistry.getId(found.component), burnt, ownInfo);
+                }
                 // normal: only broken components get a HUD; sneaking: every component shows all its info
-                if (burnt || sneaking) {
+                if (burnt || (sneaking && !ownInfo)) {
                     tooltip.add(Component.literal("    ")
                             .append(Component.translatable(ComponentRegistry.getItem(found.component).getDescriptionId()))
                             .withStyle(ChatFormatting.AQUA));
                     tooltip.add(Component.literal("    ")
                             .append(Component.translatable(burnt ? "goggles.poweradditions.burnt_out" : "goggles.poweradditions.working"))
                             .withStyle(burnt ? ChatFormatting.RED : ChatFormatting.GREEN));
-                    if (sneaking && hasUnit) {
+                    if (burnt) {
+                        BurntComponents.addRepairHints(tooltip,
+                                Component.translatable(ComponentRegistry.getItem(found.component).getDescriptionId()));
+                    }
+                    if (sneaking && hasUnit && !ownInfo) {
                         tooltip.add(Component.literal("    ")
                                 .append(Component.translatable("goggles.poweradditions.temperature",
                                         Unit.TEMPERATURE.format(temperature), Unit.TEMPERATURE.format(limit)))
@@ -81,21 +92,5 @@ public abstract class CircuitBoardBlockEntityMixin {
             }
         }
         cir.setReturnValue(!tooltip.isEmpty());
-    }
-
-    /** When a component burns out (or is replaced) the board's static model has to be rebuilt. */
-    @Inject(method = "readFromSync", at = @At("RETURN"))
-    private void poweradditions$remeshOnBurn(FriendlyByteBuf buf, CallbackInfo ci) {
-        CircuitBoardBlockEntity be = (CircuitBoardBlockEntity) (Object) this;
-        BakedCircuit baked = be.getBaked();
-        if (baked == null) return;
-        int signature = 0;
-        for (ThermalUnit unit : baked.thermalUnits) {
-            if (unit.hasOverheated()) signature = signature * 31 + unit.getKey().hashCode() + 1;
-        }
-        if (signature != poweradditions$burntSignature) {
-            poweradditions$burntSignature = signature;
-            org.patryk3211.powergrid.circuits.components.Component.modelChanged(be.getBlockPos());
-        }
     }
 }

@@ -1,0 +1,6 @@
+{
+ "parent": "powergrid:component/resistor",
+ "textures": {
+  "1": "poweradditions:block/component/burnt/resistor"
+ }
+}

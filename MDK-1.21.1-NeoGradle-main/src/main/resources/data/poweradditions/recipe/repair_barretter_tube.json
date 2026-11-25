@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:barretter_tube_broken"
+  },
+  {
+   "tag": "c:wires/iron"
+  }
+ ],
+ "result": {
+  "id": "powergrid:barretter_tube",
+  "count": 1
+ }
+}

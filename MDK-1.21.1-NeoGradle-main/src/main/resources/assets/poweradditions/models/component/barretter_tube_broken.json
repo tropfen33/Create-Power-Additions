@@ -1,0 +1,7 @@
+{
+ "parent": "powergrid:component/barretter_tube",
+ "textures": {
+  "0": "poweradditions:block/component/burnt/barretter_tube",
+  "particle": "poweradditions:block/component/burnt/barretter_tube"
+ }
+}

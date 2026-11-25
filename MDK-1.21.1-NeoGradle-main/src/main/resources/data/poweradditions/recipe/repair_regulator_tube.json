@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "poweradditions:regulator_tube_broken"
+  },
+  {
+   "item": "minecraft:glowstone_dust"
+  }
+ ],
+ "result": {
+  "id": "powergrid:regulator_tube",
+  "count": 1
+ }
+}
